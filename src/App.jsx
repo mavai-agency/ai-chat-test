@@ -1,3 +1,5 @@
+import SearchPage from './SearchPage.jsx'
+
 const services = [
   {
     number: '01',
@@ -32,7 +34,7 @@ function ArrowIcon() {
 function Header() {
   return (
     <header className="header">
-      <a className="logo" href="#" aria-label="Maveo Startseite">
+      <a className="logo" href="/" aria-label="Maveo Startseite">
         MAVEO
       </a>
 
@@ -40,6 +42,7 @@ function Header() {
         <a href="#services">Leistungen</a>
         <a href="#services">Agentur</a>
         <a href="#contact">Kontakt</a>
+        <a href="/search">AI Suche</a>
       </nav>
 
       <a className="header-cta" href="#contact">
@@ -151,7 +154,11 @@ function ServicesSection() {
   )
 }
 
-export default function App() {
+export default function App({ pathname = window.location.pathname }) {
+  if (pathname === '/search' || pathname === '/search/') {
+    return <SearchPage />
+  }
+
   return (
     <main className="site-shell">
       <Hero />
